@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Nothing to install for static site
+  build:
+    commands:
+      - echo Nothing to build for static site
+  post_build:
+    commands:
+      - echo "Starting deployment..."
+      - chmod 400 key1.pem
+      - scp -o StrictHostKeyChecking=no -i key1.pem index.html style.css script.js ubuntu@56.228.6.6:/var/www/html/
